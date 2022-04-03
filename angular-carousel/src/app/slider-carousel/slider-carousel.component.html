@@ -1,32 +1,26 @@
 <main class="container">
-  <h2>
-    Angular Slider
-  </h2>
+  <h2>Angular Slider</h2>
   <section class="slider">
     <div class="slider-list">
-      <ul #slider>
-
-        <ng-container *ngFor="let list of newData; let i = index">
-          <li class="items" @carouselAnimation>
-            <img [src]="list.productImageUrl" alt="">
-            <div>
-              <h4>{{i + 1}} {{list.name}}</h4>
-              <p>{{list.price.formattedValue}} {{list.price.currency}}</p>
-              <p>
-                <button class="btn btn-primary">Buy Now</button>
-              </p>
-            </div>
-          </li>
-        </ng-container>
-
+      <ul>
+        <li [class]="items" *ngFor="let list of newData; let i = index" @carouselAnimation>
+          <img [src]="list.productImageUrl" alt="">
+          <div>
+            <h4>{{i + 1}} {{list.name}}</h4>
+            <p>{{list.price.formattedValue}} {{list.price.currency}}</p>
+            <p>
+              <button class="btn btn-primary">Buy Now</button>
+            </p>
+          </div>
+        </li>
       </ul>
     </div>
 
     <div class="controls-arrow">
-      <a href="javascript:;" class="prev" (click)="prevClick()">
+      <a class="prev" (click)="prevClick()">
         <img src="assets/images/arrow_icon.svg" alt="">
       </a>
-      <a href="javascript:;" class="next" (click)="nextClick()">
+      <a class="next" (click)="nextClick()">
         <img src="assets/images/arrow_icon.svg" alt="">
       </a>
     </div>

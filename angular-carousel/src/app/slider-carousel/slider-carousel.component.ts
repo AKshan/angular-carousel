@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataInterface} from "../data.interface";
 import {DataService} from "../data.service";
 
@@ -29,9 +29,9 @@ export const fadeIn = animation([
 export class SliderCarouselComponent implements OnInit {
     sliderList: DataInterface[] = [];
     newData: any;
-    @ViewChild('slider') slider: any;
-    selectedItem: any;
+    //@ViewChild('slider') slider: ElementRef;
     currentIndex = 0;
+    items='items';
 
     constructor(private data: DataService) {
     }
@@ -42,13 +42,14 @@ export class SliderCarouselComponent implements OnInit {
             this.newData = cloneDeep(this.sliderList);
         });
 
-         setInterval(() => {
+       /*  setInterval(() => {
            this.nextClick()
-         }, 3000)
+         }, 3000)*/
     }
 
 
     prevClick() {
+        //this.items = 'items next';
         if (this.currentIndex > 0) {
             this.newData.unshift(this.newData[this.newData.length - 1]);
             this.newData.pop();
@@ -60,11 +61,13 @@ export class SliderCarouselComponent implements OnInit {
     }
 
     nextClick() {
+        //this.items = 'items prev';
         if (this.currentIndex <= this.sliderList.length - 1) {
             this.newData.push(this.newData[0]);
             this.newData.shift();
             this.newData[0];
             this.currentIndex++;
+
         } else {
             this.currentIndex = 0;
             this.nextClick();
