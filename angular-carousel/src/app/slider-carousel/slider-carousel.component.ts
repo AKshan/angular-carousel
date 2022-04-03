@@ -42,9 +42,9 @@ export class SliderCarouselComponent implements OnInit {
             this.newData = cloneDeep(this.sliderList);
         });
 
-       /*  setInterval(() => {
+         setInterval(() => {
            this.nextClick()
-         }, 3000)*/
+         }, 2000)
     }
 
 
